@@ -48,7 +48,9 @@
     <Get name="ThreadPool">
       <Set name="minThreads" type="int"><Property name="threads.min" default="10"/></Set>
       <Set name="maxThreads" type="int"><Property name="threads.max" default="200"/></Set>
-      <Set name="idleTimeout" type="int"><Property name="threads.timeout" default="60000"/></Set>
+      <!-- default value was 30000.  Assuming it is in ms, so setting to 10 mins to match loadbalancer. -->
+      <!-- <Set name="idleTimeout" type="int"><Property name="threads.timeout" default="28800000"/></Set> -->
+      <Set name="idleTimeout" type="int"><Property name="threads.timeout" default="7200000"/></Set>
       <Set name="detailedDump">false</Set>
     </Get>
 
@@ -78,7 +80,7 @@
     <!-- =========================================================== -->
     <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
       <Set name="secureScheme">https</Set>
-      <Set name="securePort"><Property name="jetty.secure.port" default="8443" /></Set>
+      <Set name="securePort"><Property name="jetty.secure.port" default="9443" /></Set>
       <Set name="outputBufferSize">32768</Set>
       <Set name="requestHeaderSize">8192</Set>
       <Set name="responseHeaderSize">8192</Set>

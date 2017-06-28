@@ -39,8 +39,10 @@
             </Array>
           </Arg>
           <Set name="host"><Property name="jetty.host" /></Set>
-          <Set name="port"><Property name="https.port" default="8443" /></Set>
-          <Set name="idleTimeout"><Property name="https.timeout" default="30000"/></Set>
+          <Set name="port"><Property name="https.port" default="9443" /></Set>
+          <!-- Default value was 30000.  Assuming this was in ms and upping to 10 minutes to match the loadbalancer. -->
+          <!-- <Set name="idleTimeout"><Property name="https.timeout" default="28800000"/></Set> -->
+          <Set name="idleTimeout"><Property name="https.timeout" default="3600000"/></Set>
         </New>
     </Arg>
   </Call>
